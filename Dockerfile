@@ -1,4 +1,4 @@
-FROM node:20.16-alpine3.17
+FROM node:20.3-alpine3.17
 WORKDIR /app
 
 # Install app dependencies
