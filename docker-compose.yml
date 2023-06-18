@@ -1,0 +1,16 @@
+version: '3'
+name: cah-server
+services:
+  api:
+    container_name: cah-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - '4000:4000'
+    volumes:
+      - ./src:/app/src
+    expose:
+      - '4000'
