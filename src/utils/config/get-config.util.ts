@@ -10,7 +10,7 @@ export const getConfig = (): Config => {
 
 type EnvBoolean = 'yes' | 'no' | 'true' | 'false';
 const evalEnvBoolean = (envBoolean: EnvBoolean) =>
-  ['yes', 'true'].includes(envBoolean.toLowerCase());
+  ['yes', 'true'].includes(envBoolean?.toLowerCase());
 
 // Models
 
