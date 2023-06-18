@@ -1,16 +1,21 @@
+import packageJson from '../package.json';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './api/app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import packageJson from '../package.json';
 import { getConfig } from './utils/config/get-config.util';
+import helmet from 'helmet';
 
 async function bootstrap() {
-  const { enableSwagger } = getConfig();
+  const { enableSwagger, enableCors } = getConfig();
 
   const app = await NestFactory.create(AppModule);
+  app.use(helmet());
 
+  // CORS
+  if (enableCors) app.enableCors();
+
+  // Open API
   if (enableSwagger) {
-    // Open API
     const config = new DocumentBuilder()
       .setTitle(packageJson.name)
       .setDescription(packageJson.description)
