@@ -6,7 +6,11 @@ import { UserRepository } from '../../repository/user.repository';
 export class UsersService {
   constructor(private readonly userRepository: UserRepository) {}
 
-  findById = async (userId: uuid) => {
+  async findByid(userId: uuid) {
     return await this.userRepository.getUserById(userId);
-  };
+  }
+
+  async findByNick(nick: string) {
+    return await this.userRepository.getUserByNick(nick);
+  }
 }
