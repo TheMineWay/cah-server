@@ -1,7 +1,8 @@
-import { HttpException, HttpStatus } from '@nestjs/common';
+import { HttpStatus } from '@nestjs/common';
+import { ExtendedHttpException } from '../extended-http.exception';
 
-export class NotFoundException extends HttpException {
+export class NotFoundException extends ExtendedHttpException {
   constructor() {
-    super('Not found', HttpStatus.NOT_FOUND);
+    super(HttpStatus.NOT_FOUND);
   }
 }
