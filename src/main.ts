@@ -5,6 +5,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { getConfig } from './utils/config/get-config.util';
 import helmet from 'helmet';
 import { ValidationPipe } from '@nestjs/common';
+import { PrismaService } from './server/prisma/prisma.service';
 
 async function bootstrap() {
   const { enableSwagger, enableCors } = getConfig();
@@ -33,6 +34,10 @@ async function bootstrap() {
       whitelist: true,
     }),
   );
+
+  // Prisma
+  const prismaService = app.get(PrismaService);
+  await prismaService.enableShutdownHooks(app);
 
   await app.listen(4000);
 }
