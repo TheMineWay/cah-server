@@ -6,6 +6,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from '../server/users/users.module';
 import { AuthGuard } from '../security/auth/auth.guard';
+import { InfoModule } from './info/info.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { AuthGuard } from '../security/auth/auth.guard';
       limit: 1000, // 1000 requests per minute
     }),
     // API
+    InfoModule,
     AuthModule,
 
     // Server
