@@ -9,6 +9,6 @@ export class InfoController {
   @Public()
   @Get()
   async getInfo() {
-    await this.infoService.getInfo();
+    return await this.infoService.getInfo();
   }
 }
